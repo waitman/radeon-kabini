@@ -26,9 +26,6 @@
  *          Jerome Glisse
  */
 
-#include <sys/cdefs.h>
-__FBSDID("$FreeBSD: head/sys/dev/drm2/radeon/radeon_family.h 254885 2013-08-25 19:37:15Z dumbbell $");
-
 /* this file defines the CHIP_  and family flags used in the pciids,
  * its is common between kms and non-kms because duplicating it and
  * changing one place is fail.
@@ -94,6 +91,12 @@ enum radeon_family {
 	CHIP_TAHITI,
 	CHIP_PITCAIRN,
 	CHIP_VERDE,
+	CHIP_OLAND,
+	CHIP_HAINAN,
+	CHIP_BONAIRE,
+	CHIP_KAVERI,
+	CHIP_KABINI,
+	CHIP_HAWAII,
 	CHIP_LAST,
 };
 

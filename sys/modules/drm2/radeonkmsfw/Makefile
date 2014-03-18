@@ -80,6 +80,14 @@ SUBDIR=									\
 	VERDE_mc							\
 	VERDE_me							\
 	VERDE_pfp							\
-	VERDE_rlc
+	VERDE_rlc							\
+	KABINI_ce							\
+	KABINI_mc							\
+	KABINI_me							\
+	KABINI_mec							\
+	KABINI_pfp							\
+	KABINI_rlc							\
+	KABINI_sdma
+
 
 .include <bsd.subdir.mk>
