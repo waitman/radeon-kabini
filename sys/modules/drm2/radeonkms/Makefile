@@ -105,6 +105,16 @@ SRCS	+=								\
 	iicbus_if.h							\
 	pci_if.h
 
+SRCS	+=								\
+	cik_blit_shaders.h						\
+	clearstate_ci.h							\
+	radeon_ucode.h							\
+	kv_dpm.c							\
+	cik.c								\
+	cik_blit_shaders.c						\
+	
+	
+
 CFLAGS  += -I${.CURDIR}/../../../dev/drm2/radeon ${GCC_MS_EXTENSIONS}
 
 .include <bsd.kmod.mk>
