@@ -1114,7 +1114,7 @@ static bool radeon_switcheroo_can_switch(struct pci_dev *pdev)
 	struct drm_device *dev = pci_get_drvdata(pdev);
 	bool can_switch;
 
-	spin_lock(&dev->count_lock);
+	mtx_lock(&dev->count_lock);
 	can_switch = (dev->open_count == 0);
 	spin_unlock(&dev->count_lock);
 	return can_switch;
@@ -1247,18 +1247,18 @@ int radeon_device_init(struct radeon_device *rdev,
 
 	/* Registers mapping */
 	/* TODO: block userspace mapping of io register */
-	spin_lock_init(&rdev->mmio_idx_lock);
-	spin_lock_init(&rdev->smc_idx_lock);
-	spin_lock_init(&rdev->pll_idx_lock);
-	spin_lock_init(&rdev->mc_idx_lock);
-	spin_lock_init(&rdev->pcie_idx_lock);
-	spin_lock_init(&rdev->pciep_idx_lock);
-	spin_lock_init(&rdev->pif_idx_lock);
-	spin_lock_init(&rdev->cg_idx_lock);
-	spin_lock_init(&rdev->uvd_idx_lock);
-	spin_lock_init(&rdev->rcu_idx_lock);
-	spin_lock_init(&rdev->didt_idx_lock);
-	spin_lock_init(&rdev->end_idx_lock);
+	mtx_init(&rdev->mmio_idx_lock);
+	mtx_init(&rdev->smc_idx_lock);
+	mtx_init(&rdev->pll_idx_lock);
+	mtx_init(&rdev->mc_idx_lock);
+	mtx_init(&rdev->pcie_idx_lock);
+	mtx_init(&rdev->pciep_idx_lock);
+	mtx_init(&rdev->pif_idx_lock);
+	mtx_init(&rdev->cg_idx_lock);
+	mtx_init(&rdev->uvd_idx_lock);
+	mtx_init(&rdev->rcu_idx_lock);
+	mtx_init(&rdev->didt_idx_lock);
+	mtx_init(&rdev->end_idx_lock);
 	if (rdev->family >= CHIP_BONAIRE) {
 		rdev->rmmio_base = pci_resource_start(rdev->pdev, 5);
 		rdev->rmmio_size = pci_resource_len(rdev->pdev, 5);
@@ -1298,9 +1298,11 @@ int radeon_device_init(struct radeon_device *rdev,
 	if ((radeon_runtime_pm == -1) && radeon_is_px())
 		runtime = true;
 	vga_switcheroo_register_client(rdev->pdev, &radeon_switcheroo_ops, runtime);
+/*
+tmp remove dep on pm_domain wcg
 	if (runtime)
 		vga_switcheroo_init_domain_pm_ops(rdev->dev, &rdev->vga_pm_domain);
-
+*/
 	r = radeon_init(rdev);
 	if (r)
 		return r;

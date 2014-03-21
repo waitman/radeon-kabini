@@ -53,7 +53,7 @@ __FBSDID("$FreeBSD: head/sys/dev/drm2/radeon/radeon_asic.c 254885 2013-08-25 19:
 static uint32_t radeon_invalid_rreg(struct radeon_device *rdev, uint32_t reg)
 {
 	DRM_ERROR("Invalid callback to read register 0x%04X\n", reg);
-	BUG_ON(1);
+	//BUG_ON(1);
 	return 0;
 }
 
@@ -71,7 +71,7 @@ static void radeon_invalid_wreg(struct radeon_device *rdev, uint32_t reg, uint32
 {
 	DRM_ERROR("Invalid callback to write register 0x%04X with 0x%08X\n",
 		  reg, v);
-	BUG_ON(1);
+	//BUG_ON(1);
 }
 
 /**
@@ -1054,7 +1054,7 @@ static struct radeon_asic rv6xx_asic = {
 		.get_sclk = &rv6xx_dpm_get_sclk,
 		.get_mclk = &rv6xx_dpm_get_mclk,
 		.print_power_state = &rv6xx_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &rv6xx_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &rv6xx_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &rv6xx_dpm_force_performance_level,
 	},
 	.pflip = {
@@ -1144,7 +1144,7 @@ static struct radeon_asic rs780_asic = {
 		.get_sclk = &rs780_dpm_get_sclk,
 		.get_mclk = &rs780_dpm_get_mclk,
 		.print_power_state = &rs780_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &rs780_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &rs780_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &rs780_dpm_force_performance_level,
 	},
 	.pflip = {
@@ -1248,7 +1248,7 @@ static struct radeon_asic rv770_asic = {
 		.get_sclk = &rv770_dpm_get_sclk,
 		.get_mclk = &rv770_dpm_get_mclk,
 		.print_power_state = &rv770_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &rv770_dpm_force_performance_level,
 		.vblank_too_short = &rv770_dpm_vblank_too_short,
 	},
@@ -1366,7 +1366,7 @@ static struct radeon_asic evergreen_asic = {
 		.get_sclk = &rv770_dpm_get_sclk,
 		.get_mclk = &rv770_dpm_get_mclk,
 		.print_power_state = &rv770_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &rv770_dpm_force_performance_level,
 		.vblank_too_short = &cypress_dpm_vblank_too_short,
 	},
@@ -1458,7 +1458,7 @@ static struct radeon_asic sumo_asic = {
 		.get_sclk = &sumo_dpm_get_sclk,
 		.get_mclk = &sumo_dpm_get_mclk,
 		.print_power_state = &sumo_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &sumo_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &sumo_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &sumo_dpm_force_performance_level,
 	},
 	.pflip = {
@@ -1549,7 +1549,7 @@ static struct radeon_asic btc_asic = {
 		.get_sclk = &btc_dpm_get_sclk,
 		.get_mclk = &btc_dpm_get_mclk,
 		.print_power_state = &rv770_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &rv770_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &rv770_dpm_force_performance_level,
 		.vblank_too_short = &btc_dpm_vblank_too_short,
 	},
@@ -1692,7 +1692,7 @@ static struct radeon_asic cayman_asic = {
 		.get_sclk = &ni_dpm_get_sclk,
 		.get_mclk = &ni_dpm_get_mclk,
 		.print_power_state = &ni_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &ni_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &ni_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &ni_dpm_force_performance_level,
 		.vblank_too_short = &ni_dpm_vblank_too_short,
 	},
@@ -1792,7 +1792,7 @@ static struct radeon_asic trinity_asic = {
 		.get_sclk = &trinity_dpm_get_sclk,
 		.get_mclk = &trinity_dpm_get_mclk,
 		.print_power_state = &trinity_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &trinity_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &trinity_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &trinity_dpm_force_performance_level,
 		.enable_bapm = &trinity_dpm_enable_bapm,
 	},
@@ -1922,7 +1922,7 @@ static struct radeon_asic si_asic = {
 		.get_sclk = &ni_dpm_get_sclk,
 		.get_mclk = &ni_dpm_get_mclk,
 		.print_power_state = &ni_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &si_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &si_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &si_dpm_force_performance_level,
 		.vblank_too_short = &ni_dpm_vblank_too_short,
 	},
@@ -2067,7 +2067,7 @@ static struct radeon_asic ci_asic = {
 		.get_sclk = &ci_dpm_get_sclk,
 		.get_mclk = &ci_dpm_get_mclk,
 		.print_power_state = &ci_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &ci_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &ci_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &ci_dpm_force_performance_level,
 		.vblank_too_short = &ci_dpm_vblank_too_short,
 		.powergate_uvd = &ci_dpm_powergate_uvd,
@@ -2168,7 +2168,7 @@ static struct radeon_asic kv_asic = {
 		.get_sclk = &kv_dpm_get_sclk,
 		.get_mclk = &kv_dpm_get_mclk,
 		.print_power_state = &kv_dpm_print_power_state,
-		.debugfs_print_current_performance_level = &kv_dpm_debugfs_print_current_performance_level,
+//		.debugfs_print_current_performance_level = &kv_dpm_debugfs_print_current_performance_level,
 		.force_performance_level = &kv_dpm_force_performance_level,
 		.powergate_uvd = &kv_dpm_powergate_uvd,
 		.enable_bapm = &kv_dpm_enable_bapm,

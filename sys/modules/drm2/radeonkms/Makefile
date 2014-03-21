@@ -15,7 +15,8 @@ SRCS	=								\
 	rs600_reg_safe.h						\
 	r600_reg_safe.h							\
 	evergreen_reg_safe.h						\
-	cayman_reg_safe.h
+	cayman_reg_safe.h						\
+	kv_dpm.h
 SRCS	+=								\
 	radeon_acpi.c							\
 	radeon_agp.c							\
@@ -110,6 +111,7 @@ SRCS	+=								\
 	clearstate_ci.h							\
 	radeon_ucode.h							\
 	kv_dpm.c							\
+	kv_scm.c							\
 	cik.c								\
 	cik_blit_shaders.c						\
 	

@@ -1022,7 +1022,7 @@ struct radeon_cs_parser {
 	u32			cs_flags;
 	u32			ring;
 	s32			priority;
-	struct ww_acquire_ctx	ticket;
+	struct mtx	ticket;
 };
 
 static inline u32 radeon_get_ib_value(struct radeon_cs_parser *p, int idx)
@@ -2249,8 +2249,9 @@ struct notifier_block
 	/* clock, powergating flags */
 	u32 cg_flags;
 	u32 pg_flags;
-
+/* tmp remove dep on pm_domain wcg (usd by vga_switcheroo anyway
 	struct dev_pm_domain vga_pm_domain;
+*/
 	bool have_disp_power_ref;
 };
 
